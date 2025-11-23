@@ -1,0 +1,200 @@
+:root{
+  --hero-min: 280px;
+  --hero-ideal: 40vh;
+  --hero-max: 520px;
+}
+/* --- Fancy CTA button --- */
+.cta-wrap {
+  display: flex;
+  justify-content: center;
+}
+.btn-cta {
+  --glow: rgba(99, 102, 241, .35);
+  padding: .8rem 1.25rem;
+  border-radius: 999px;
+  border: 0;
+  font-weight: 700;
+  letter-spacing: .2px;
+  background: linear-gradient(90deg, #6366f1, #22d3ee);
+  color: #fff;
+  box-shadow: 0 10px 24px var(--glow);
+  transform: translateZ(0);
+}
+.btn-cta:hover { filter: brightness(1.05); }
+.btn-cta:disabled {
+  background: #cbd5e1;
+  color: #475569;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* --- Post list thumbnails --- */
+.post-thumb {
+  width: 300px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: .6rem;
+  flex: 0 0 96px;
+}
+/* Hero now uses an <img> so we preserve the image’s original aspect ratio */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  background: #000; /* subtle backdrop while image loads */
+  min-height: 0;
+}
+
+/* Full-width image at natural height */
+.page-hero .hero-image {
+  width: 100%;
+  height: clamp(var(--hero-min), var(--hero-ideal), var(--hero-max));          /* keep original aspect ratio */
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: brightness(.72); /* darken a bit for readable overlay text */
+  border-radius: inherit;
+}
+.page-hero::after {
+  content: "";
+  position: absolute; 
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,0) 60%);
+  pointer-events: none;
+}
+/* Center the overlay text over the image */
+.page-hero .content {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  padding: 2.5rem 1.25rem;
+  z-index: 1;
+  text-shadow: 0 8px 30px rgba(0,0,0,.35);
+}
+@media (max-width: 480px) {
+  .page-hero .hero-img {
+    height: clamp(220px, 36vh, 380px);
+  }
+}
+.feature-card { border-radius: 1rem; }
+.feature-card:hover { transform: translateY(-2px); transition: transform .12s ease; }
+
+.about-page {
+  background: radial-gradient(circle at 20% 20%, #1e293b, #0f172a);
+  color: #f8fafc;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* Hero Section */
+.aboutpage-hero {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 400px;
+  background: linear-gradient(135deg, #1e3a8a, #22d3ee);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.page-hero .three-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.page-hero .content {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  z-index: 2;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #6366f1, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.2);
+}
+
+/* Soft hover glow on headings */
+h5 {
+  transition: color 0.3s ease;
+}
+h5:hover {
+  color: #22d3ee;
+}
+.user-strip{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: .75rem;
+  padding: .6rem .9rem;
+  background: #fff;
+}
+.user-box{
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.user-strip .divider{
+  width: 1px;
+  height: 32px;
+  background: #e5e7eb;
+}
+.avatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+.label{
+  font-size: .75rem;
+  color: #64748b;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.name{
+  font-weight: 600;
+  line-height: 1.1;
+}
+.email{
+  font-size: .8rem;
+  color: #475569;
+}
+/* Makes 3D background stay behind everything */
+canvas {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -10 !important;
+  pointer-events: none;
+}
+
+/* ensures all content stays above ThreeBG */
+.app-content {
+  position: relative;
+  z-index: 10;
+}
+footer {
+  position: relative;
+  z-index: 12;
+}

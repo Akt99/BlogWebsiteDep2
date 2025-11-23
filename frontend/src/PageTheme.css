@@ -1,0 +1,80 @@
+/* full screen animated background wrapper */
+.page-wrapper {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* cinematic gradient overlay */
+.page-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.22) 50%,
+    rgba(0,0,0,0.55) 100%
+  );
+}
+
+/* content container (glass card) */
+.page-content-container {
+  position: relative;
+  z-index: 2;
+  width: min(420px, 90%);
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px) saturate(1.2);
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+/* emerald glow behind cards */
+.page-content-container::before {
+  content: "";
+  position: absolute;
+  inset: -25px;
+  background: radial-gradient(circle at 50% 50%,
+    rgba(16,185,129,0.45),
+    rgba(74,222,128,0.18),
+    transparent 70%
+  );
+  filter: blur(60px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* universal input styling */
+.page-content-container input,
+.page-content-container textarea,
+.page-content-container select {
+  background: rgba(255,255,255,0.92);
+  border: none;
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+/* universal button styling */
+.page-content-container button {
+  border-radius: 8px;
+}
+
+/* text */
+.page-content-container h2, h3, h4, p, label {
+  color: #fff;
+}
+
+/* mobile */
+@media (max-width: 700px) {
+  .page-content-container {
+    width: 92%;
+    padding: 1.5rem;
+  }
+}
