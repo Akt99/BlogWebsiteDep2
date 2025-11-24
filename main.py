@@ -522,6 +522,33 @@ def serve_spa_assets(path):
 # -----------------------------
 # Entry
 # -----------------------------
+
+# -----------------------------
+# REACT SPA FALLBACK (⭐ REQUIRED FOR RENDER)
+# -----------------------------
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve_react(path):
+    """
+    Serve index.html for all non-API, non-existing paths
+    so React Router works on Render.
+    """
+    # Do NOT intercept /api/*
+    if path.startswith("api"):
+        abort(404)
+
+    dist_dir = app.static_folder
+    index_path = os.path.join(dist_dir, "index.html")
+
+    # If the file exists in dist, serve it
+    file_path = os.path.join(dist_dir, path)
+    if os.path.exists(file_path) and os.path.isfile(file_path):
+        return send_from_directory(dist_dir, path)
+
+    # Else return index.html for React routes
+    return send_from_directory(dist_dir, "index.html")
+
 if __name__ == "__main__":
     # For local dev, Flask runs on :5001; Vite can proxy /api to this.
     app.run(debug=True, port=5001)
