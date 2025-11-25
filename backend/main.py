@@ -30,7 +30,13 @@ load_dotenv()
 
 # If you plan to serve React build from Flask in production, keep static_folder below.
 # If not, you can use: app = Flask(__name__)
-app = Flask(__name__, static_folder="frontend/dist", static_url_path="/")
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+app = Flask(
+    __name__,
+    static_folder=os.path.join(BASE_DIR, "frontend", "dist"),
+    static_url_path="/"
+)
 
 # Load secret key from env (supports FLASK_KEY or SECRET_KEY)
 _secret = os.environ.get("FLASK_KEY") or os.environ.get("SECRET_KEY")
