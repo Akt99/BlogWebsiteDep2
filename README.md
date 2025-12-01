@@ -32,6 +32,8 @@ Ensures a clean, recognizable identity system without storing image files.
 The New Post button automatically disables when the user logs out, preventing unauthorized creation.
 
 Only logged-in users can access the /new-post route.
+
+*Tech Stack*
   <!-- JavaScript -->
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
 <!-- React -->
