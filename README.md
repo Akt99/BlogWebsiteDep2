@@ -33,7 +33,7 @@ The New Post button automatically disables when the user logs out, preventing un
 
 Only logged-in users can access the /new-post route.
 
-*Tech Stack*
+**Tech Stack**
   <!-- JavaScript -->
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
 <!-- React -->
