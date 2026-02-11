@@ -45,8 +45,13 @@ export default function Home() {
   }
   async function delPost(id) {
     if (confirm("Delete this post?")) {
-      await api.delete(`/posts/${id}`);
-      loadPosts();
+      try {
+        await api.delete(`/posts/${id}`);
+        loadPosts();
+      } catch (e) {
+        console.error(e);
+        alert("Failed to delete post.");
+      }
     }
   }
 

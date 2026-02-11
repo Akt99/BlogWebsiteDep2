@@ -97,7 +97,7 @@ class BlogPost(db.Model):
     body: Mapped[str] = mapped_column(Text, nullable=False)
     img_url: Mapped[str] = mapped_column(String(250), nullable=False)
     pinned: Mapped[bool]= mapped_column(Boolean, default=False, nullable=False)
-    comments = relationship("Comment", back_populates="parent_post")
+    comments = relationship("Comment", back_populates="parent_post", cascade="all, delete-orphan")
 
 class User(UserMixin, db.Model):
     __tablename__ = "users"
