@@ -1,6 +1,9 @@
 # BlogWebsiteDep
 A full-stack blog platform built with Flask and React, offering a smooth writing and reading experience while keeping roles, permissions, and user interactions intuitive and secure.
 
+# Video Demo: https://drive.google.com/file/d/1fcRjxqnySwScLPwONfN5az1RoYM8n80o/view?usp=share_link
+
+
 # ✨ Key Features
 
 # 🔐 Authentication & User Flow
